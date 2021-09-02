@@ -245,6 +245,125 @@ run:
 
 NB: I was sure it had nailed this until I ran it!
 
+### Addition
+
+https://youtu.be/iccd86vOz3w?t=11721
+
+```python
+>>> """
+... Add 34957 to 70764
+...
+... Show your answer with:
+... if __name__ == "__main__":
+... """
+'\nAdd 34957 to 70764\n\nShow your answer with:\nif __name__ == "__main__":\n'
+>>>
+>>> def add_34957_to_70764():
+...     return 34957 + 70764
+...
+>>> if __name__ == "__main__":
+...     print(add_34957_to_70764())
+...
+```
+
+### Sequence completion
+
+https://youtu.be/iccd86vOz3w?t=12031
+
+in:
+```python
+"""
+... Example of a function that completes this pattern 1, 3, 5, 7
+...
+... Show your answer with:
+... if __name__ == "__main__":
+... """
+```
+
+run:
+```python
+>>> """
+... Example of a function that completes this pattern 1, 3, 5, 7
+...
+... Show your answer with:
+... if __name__ == "__main__":
+... """
+'\nExample of a function that completes this pattern 1, 3, 5, 7\n\nShow your answer with:\nif __name__ == "__main__":\n'
+>>>
+>>> def odd_numbers(n):
+...     """
+...     Return a list of the first n odd numbers.
+...     """
+...     return [i for i in range(1, n*2, 2)]
+...
+>>> if __name__ == "__main__":
+...     print(odd_numbers(5))
+...
+[1, 3, 5, 7, 9]
+```
+
+### Scramble
+
+https://youtu.be/iccd86vOz3w?t=12471
+
+in:
+```python
+def scramble(word):
+    """
+    Returns a [set of letters in word, scrambled word]
+    """
+```
+
+run:
+```python
+>>> def scramble(word):
+...     """
+...     Returns a [set of letters in word, scrambled word]
+...     """
+...     letters = set(word)
+...     scrambled = ''.join(random.sample(word, len(word)))
+...     return [letters, scrambled]
+...
+>>> def unscramble(letters, scrambled):
+...     """
+...     Returns a list of words that can be made from the letters in the scrambled word
+...     """
+...     words = []
+...     for word in dictionary:
+...         if set(word) == letters:
+...             words.append(word)
+...     return words
+...
+>>> def main():
+...     """
+...     Main function
+...     """
+...     word = input('Enter a word: ')
+...     letters, scrambled = scramble(word)
+...     print('The letters in the word are: {}'.format(letters))
+...     print('The scrambled word is: {}'.format(scrambled))
+...     print('The words that can be made from the scrambled word are: {}'.format(unscramble(letters, scrambled)))
+...
+>>> if __name__ == '__main__':
+...     main()
+...
+Enter a word: abc
+Traceback (most recent call last):
+  File "<stdin>", line 2, in <module>
+  File "<stdin>", line 6, in main
+  File "<stdin>", line 6, in scramble
+NameError: name 'random' is not defined
+>>>
+```
+
+NB I imported random and ended up with:
+```
+>>> scramble("abc")
+[{'a', 'c', 'b'}, 'abc']
+```
+
+`unscramble` was fundamentally broken.
+
 ### Parameters:
 
 | Engine            | davinci-codex            |
