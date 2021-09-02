@@ -4,7 +4,7 @@ As a fan of [Machine Learning Street Talk](https://www.youtube.com/channel/UCMLt
 
 ### Sorting
 
-https://youtu.be/iccd86vOz3w?t=1647
+https://youtu.be/iccd86vOz3w?t=1630
 
 in:
 ```python
@@ -131,7 +131,7 @@ def solve(cube):
 
 ### Boiling water
 
-https://youtu.be/iccd86vOz3w?t=9182
+https://youtu.be/iccd86vOz3w?t=9162
 
 in:
 ```python
