@@ -247,18 +247,11 @@ NB: I was sure it had nailed this until I ran it!
 
 ### Parameters:
 
-Engine:            davinci-codex
-
-Response length:   <increased untill I got enough code>
-
-Temperature:       0
-
-Top P:             1
-
-Frequency penalty: 0
-
-Presence penalty:  0
-
-Best of:           1
-
-02/09/2021
+| Engine            | davinci-codex            |
+|-------------------|--------------------------|
+| Response length   | tweaked for each problem |
+| Temperature       | 0                        |
+| Top P             | 1                        |
+| Frequency penalty | 0                        |
+| Presence penalty  | 0                        |
+| Best of           | 1                        |
