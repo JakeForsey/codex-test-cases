@@ -1,6 +1,6 @@
 # Codex Test Cases
 
-I've run some of the stuff from .... to see if codex resolves some of the reservations raised.
+As a fan of [Machine Learning Street Talk](https://www.youtube.com/channel/UCMLtBahI5DMrt0NPvDSoIRQ) podcast I thought it would be cool to go back over some of the reservations about GPT-3s raised in the podcast and see if [Open AIs codex](https://openai.com/blog/openai-codex/) resolved any of them.
 
 ### Sorting
 
@@ -50,7 +50,127 @@ run:
 [1, 2, 3, 4, 5]
 ```
 
+### Substitution Cipher
+
+https://youtu.be/iccd86vOz3w?t=2670
+
+First attempt failed, I had to add example usage of the model and `class Cipher` to get past the sklearn imports!
+
+in:
+```python
+"""
+Example of a class that follows the sci-kit learn compliant model that learns a substitution cipher
+
+model = Cipher()
+model.fit(["cat", "hat"], ["ybh", "qbh"])
+model.predict(["mat"])
+"obh"
+"""
+
+class Cipher:
+```
+
+out:
+```python
+    def __init__(self):
+        self.mapping = {}
+
+    def fit(self, X, y):
+        for x, y in zip(X, y):
+            for x_char, y_char in zip(x, y):
+                self.mapping[x_char] = y_char
+
+    def predict(self, X):
+        return [self.mapping[x_char] for x_char in X]
+```
+
+ run:
+```python
+>>> class Cipher:
+...     def __init__(self):
+...         self.mapping = {}
+...     def fit(self, X, y):
+...         for x, y in zip(X, y):
+...             for x_char, y_char in zip(x, y):
+...                 self.mapping[x_char] = y_char
+...     def predict(self, X):
+...         return [self.mapping[x_char] for x_char in X]
+...
+>>>
+>>> model = Cipher()
+>>> model.fit(["cat", "hat"], ["ybh", "qbh"])
+>>> model.predict(["mat"])
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 9, in predict
+  File "<stdin>", line 9, in <listcomp>
+KeyError: 'mat'
+```
+
+NB: This is a shame, so close, just needed to iterate over the chars in X
+
+### Rubix cube
+
+https://youtu.be/iccd86vOz3w?t=5108
+
+in:
+```python
+"""
+Example of a function that returns the next action to solve a rubik cube
+"""
+```
+
+out:
+```python
+def solve(cube):
+    """
+    Solves a rubik cube
+    """
+    return "R"
+```
+
+### Boiling water
+
+https://youtu.be/iccd86vOz3w?t=9182
+
+in:
+```python
+"""
+Example of a function that returns whether or not water is boiling based on temperature
+"""
+```
+
+out:
+```python
+
+def is_water_boiling(temp):
+    """
+    Returns whether or not water is boiling based on temperature
+    """
+    return temp >= 100
+
+print(is_water_boiling(100))
+print(is_water_boiling(50))
+```
+
+run:
+```python
+>>> def is_water_boiling(temp):
+...     """
+...     Returns whether or not water is boiling based on temperature
+...     """
+...     return temp >= 100
+...
+>>> print(is_water_boiling(100))
+True
+>>> print(is_water_boiling(50))
+False
+>>>
+```
+
 ### Nth digit of pi
+
+I remember Keith giving this as an example, but can't find the timestamp.
 
 in:
 ```python
@@ -123,89 +243,22 @@ run:
 9
 ```
 
-### Substitution Cipher
-
-https://youtu.be/iccd86vOz3w?t=2670
-
-First attempt failed, I had to add example usage of the model and `class Cipher` to get past the sklearn imports!
-
-in:
-```python
-"""
-Example of a class that follows the sci-kit learn compliant model that learns a substitution cipher
-
-model = Cipher()
-model.fit(["cat", "hat"], ["ybh", "qbh"])
-model.predict(["mat"])
-"obh"
-"""
-
-class Cipher:
-```
-
-out:
-```python
-    def __init__(self):
-        self.mapping = {}
-
-    def fit(self, X, y):
-        for x, y in zip(X, y):
-            for x_char, y_char in zip(x, y):
-                self.mapping[x_char] = y_char
-
-    def predict(self, X):
-        return [self.mapping[x_char] for x_char in X]
-```
-
- run:
-```python
->>> class Cipher:
-...     def __init__(self):
-...         self.mapping = {}
-...     def fit(self, X, y):
-...         for x, y in zip(X, y):
-...             for x_char, y_char in zip(x, y):
-...                 self.mapping[x_char] = y_char
-...     def predict(self, X):
-...         return [self.mapping[x_char] for x_char in X]
-...
->>>
->>> model = Cipher()
->>> model.fit(["cat", "hat"], ["ybh", "qbh"])
->>> model.predict(["mat"])
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-  File "<stdin>", line 9, in predict
-  File "<stdin>", line 9, in <listcomp>
-KeyError: 'mat'
-```
-
-### Rubix cube
-
-in:
-```python
-"""
-Example of a function that returns the next action to solve a rubik cube
-"""
-```
-
-out:
-```python
-def solve(cube):
-    """
-    Solves a rubik cube
-    """
-    return "R"
-```
+NB: I was sure it had nailed this until I ran it!
 
 ### Parameters:
 
 Engine:            davinci-codex
+
 Response length:   <increased untill I got enough code>
+
 Temperature:       0
+
 Top P:             1
+
 Frequency penalty: 0
+
 Presence penalty:  0
+
 Best of:           1
 
 02/09/2021
